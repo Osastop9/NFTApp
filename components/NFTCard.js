@@ -17,7 +17,19 @@ const NFTCard = ({ data }) => {
         />
       </View>
       <CircleButton imageUrl={assets.heart} right={10} top={10} />
-      <SubInfo/>
+      <SubInfo />
+      <View style={styles.titleContainer}>
+        <NFTTitle
+          title={data.name}
+          subTitle={data.creator}
+          titleSize={SIZES.large}
+          subTitleSize={SIZES.small}
+        />
+      </View>
+      <View style={styles.priceContainer}>
+        <EthPrice price={data.price}/>
+        <RectButton/>
+      </View>
     </View>
   );
 };
@@ -39,6 +51,16 @@ const styles = StyleSheet.create({
     marginBottom: SIZES.extraLarge,
     margin: SIZES.base,
     ...SHADOWS.dark,
+  },
+  priceContainer: {
+    marginTop: SIZES.font,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  titleContainer: {
+    width: "100%",
+    padding: SIZES.font,
   },
 });
 
