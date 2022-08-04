@@ -29,11 +29,7 @@ const DetailsHeader = ({ data, navigation }) => {
         left={15}
         top={50}
       />
-      <CircleButton
-        imageUrl={assets.heart}
-        right={15}
-        top={50}
-      />
+      <CircleButton imageUrl={assets.heart} right={15} top={50} />
     </View>
   );
 };
@@ -59,6 +55,14 @@ const DetailsScreen = ({ route, navigation }) => {
         ListHeaderComponent={() => (
           <React.Fragment>
             <DetailsHeader data={data} navigation={navigation} />
+            <SubInfo />
+            <View style={styles.detailsDescContainer}>
+              <DetailsDesc data={data} />
+
+              {data.bids.length > 0 && (
+                <Text style={styles.currentBidTxt}>Current Bid</Text>
+              )}
+            </View>
           </React.Fragment>
         )}
       />
@@ -79,6 +83,14 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+  },
+  currentBidTxt: {
+    fontSize: SIZES.font,
+    fontFamily: FONTS.semiBold,
+    color: COLORS.primary,
+  },
+  detailsDescContainer: {
+    padding: SIZES.font,
   },
   detailsImage: {
     width: "100%",
